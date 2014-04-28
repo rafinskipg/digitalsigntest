@@ -1,8 +1,32 @@
 .hero-unit
-  h1 'Allo, 'Allo!
-  p You now have
-  ul
-      li Jade
-      li(ng-repeat="thing in awesomeThings") {{thing}}
-  p installed.
-  h3 Enjoy coding! - Yeoman
+  h1 Testing encryption
+  div.row
+    form
+      div  
+        input(ng-model="forkey", type="text", placeholder="Value for generate key", value="1q2232sj")
+  div.row
+    button.btn.btn-success(ng-click="generateKey()", name="") Get key
+  div(ng-show="keygenerated")
+    h3 Key generated
+    pre
+      {{keygenerated}}
+
+  div(ng-show="keygenerated")
+    form
+      div
+        input(ng-model="cardnumber", type="text", placeholder="Card Number")
+      div
+        input(ng-model="cvc", type="text", placeholder="cvc")
+      div
+        input(ng-model="date", type="text", placeholder="Date")
+    div.row
+      button.btn.btn-info(ng-click="decrypt()", ng-disabled="!keygenerated", value="") Encrypt with key
+  div(ng-show="undecrypted")
+    h3 Before sending to the server
+    pre
+      | Unencrypted data = {{undecrypted}}
+      | Encrypted data = {{encrypted}}
+    h3 The server returns ->
+    pre
+      {{decryptgenerated}}
+ 

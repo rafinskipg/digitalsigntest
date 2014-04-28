@@ -1,7 +1,9 @@
 {
   "name": "digitalsign",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "node-forge": "^0.2.37"
+  },
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-contrib-copy": "~0.4.1",

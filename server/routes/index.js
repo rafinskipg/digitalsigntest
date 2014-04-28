@@ -1,10 +1,17 @@
 /*jslint node: true */
+var rsa = require('./rsa');
+
 'use strict';
-exports.awesomeThings = function(req, res) {
-    res.json([
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma',
-        'Express'
-    ]);
+exports.getKey = function(req, res) {
+  var key = rsa.generateKey(req.params.uniqueid);
+  res.json({ key: key });
+};
+
+exports.decrypt = function(req,res) {
+  var undecrypted = req.body.data;
+  var decrypted = rsa.decrypt(undecrypted);
+  res.json({
+    undecrypted: undecrypted,
+    decrypted : decrypted
+  });
 };

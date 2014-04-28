@@ -3,7 +3,7 @@ var rsa = require('./rsa');
 
 'use strict';
 exports.getKey = function(req, res) {
-  var key = rsa.generateKey(req.params.uniqueid);
+  var key = rsa.generateKey();
   res.json({ key: key });
 };
 

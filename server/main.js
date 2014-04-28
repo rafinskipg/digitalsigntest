@@ -6,7 +6,7 @@ var express = require('express'),
 
 app.use(express.bodyParser());
 
-app.get('/api/getkey/:uniqueid', routes.getKey);
+app.get('/api/getkey', routes.getKey);
 app.post('/api/decrypt', routes.decrypt);
 
 app.use(function (req, res) {

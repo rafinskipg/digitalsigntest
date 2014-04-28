@@ -1,15 +1,12 @@
 .hero-unit
   h1 Testing encryption
   div.row
-    form
-      div  
-        input(ng-model="forkey", type="text", placeholder="Value for generate key", value="1q2232sj")
-  div.row
     button.btn.btn-success(ng-click="generateKey()", name="") Get key
   div(ng-show="keygenerated")
     h3 Key generated
     pre
-      {{keygenerated}}
+      | Returned by server: key - {{keygenerated}}
+      | Key from PEM - {{publicKey}}
 
   div(ng-show="keygenerated")
     form
@@ -29,4 +26,9 @@
     h3 The server returns ->
     pre
       {{decryptgenerated}}
- 
+
+  div(ng-show="undecrypted") 
+    div.row
+      button.btn.btn-info(ng-click="hack()", ng-disabled="!keygenerated", value="") Try to decrypt it with the client key only
+    pre(ng-show="hacked")
+      {{hacked}}

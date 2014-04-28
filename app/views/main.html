@@ -2,18 +2,12 @@
 <div class="hero-unit">
   <h1>Testing encryption</h1>
   <div class="row">
-    <form>
-      <div> 
-        <input ng-model="forkey" type="text" placeholder="Value for generate key" value="1q2232sj"/>
-      </div>
-    </form>
-  </div>
-  <div class="row">
     <button ng-click="generateKey()" name="" class="btn btn-success">Get key</button>
   </div>
   <div ng-show="keygenerated">
     <h3>Key generated</h3>
-    <pre>{{keygenerated}}</pre>
+    <pre>Returned by server: key - {{keygenerated}}
+Key from PEM - {{publicKey}}</pre>
   </div>
   <div ng-show="keygenerated">
     <form>
@@ -37,5 +31,11 @@
 Encrypted data = {{encrypted}}</pre>
     <h3>The server returns -></h3>
     <pre>{{decryptgenerated}}</pre>
+  </div>
+  <div ng-show="undecrypted"> 
+    <div class="row">
+      <button ng-click="hack()" ng-disabled="!keygenerated" value="" class="btn btn-info">Try to decrypt it with the client key only</button>
+    </div>
+    <pre ng-show="hacked">{{hacked}}</pre>
   </div>
 </div>
